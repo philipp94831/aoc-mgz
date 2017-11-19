@@ -5,7 +5,7 @@
 from construct import (Array, Byte, Embedded, Float32l, If, Int16ul, Int32sl,
                        Int32ul, Padding, String, Struct, Tell, this)
 
-from mgz.enums import MyDiplomacyEnum, TheirDiplomacyEnum
+from mgz.enums import MyDiplomacyEnum, TheirDiplomacyEnum, CivEnum, ColorEnum
 from mgz.header.objects import existing_object
 from mgz.header.playerstats import player_stats
 from mgz.util import Find, GotoObjectsEnd, RepeatUpTo
@@ -32,9 +32,9 @@ attributes = "attributes"/Struct(
         lambda ctx: ctx.num_unk, "unk_structure"/Struct(Padding(8))
     )),
     Padding(5),
-    "civilization"/Byte,
+    CivEnum("civilization"/Byte),
     Padding(3),
-    "player_color"/Byte,
+    ColorEnum("player_color"/Byte),
     Padding(1),
 )
 

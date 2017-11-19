@@ -4,8 +4,9 @@ from construct import (Array, Byte, Embedded, Float32l, If, Int16sl, Int16ub,
                        Int16ul, Int32ub, Int32ul, Padding, Peek, Struct,
                        Switch)
 
-from mgz.enums import ObjectEnum, ObjectTypeEnum, ResourceEnum
+from mgz.enums import ObjectTypeEnum, ResourceEnum
 from mgz.util import Find
+from mgz.adapters import UnitAdapter
 
 # pylint: disable=invalid-name
 
@@ -14,7 +15,7 @@ from mgz.util import Find
 
 # Existing objects all have the same header.
 existing_object_header = "header"/Struct(
-    ObjectEnum("object_type"/Int16ul),
+    UnitAdapter("object_type"/Int16ul),
     Padding(2),
     Padding(4),
     "hitpoints"/Float32l,

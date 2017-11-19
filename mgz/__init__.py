@@ -11,10 +11,10 @@ from mgz.header.initial import initial
 from mgz.header.achievements import achievements
 from mgz.header.scenario import scenario
 from mgz.header.lobby import lobby
-
+from mgz.adapters import VersionAdapter
 
 compressed_header = Struct(
-    "version"/CString(encoding='latin1'),
+    VersionAdapter("version"/CString(encoding='latin1')),
     "sub_version"/Float32l,
     ai,
     replay,

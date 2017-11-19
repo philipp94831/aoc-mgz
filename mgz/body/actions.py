@@ -7,6 +7,7 @@ from mgz.body.achievements import achievements
 from mgz.enums import (ResourceEnum, ResourceLevelEnum, RevealMapEnum,
                        StartingAgeEnum, VictoryEnum, DiplomacyStanceEnum,
                        GameActionModeEnum, OrderTypeEnum, ReleaseTypeEnum)
+from mgz.adapters import UnitAdapter, MapAdapter, TechAdapter
 from mgz.util import TimeSecAdapter
 
 # pylint: disable=invalid-name
@@ -81,7 +82,7 @@ spec = "spec"/Struct(
 queue = "queue"/Struct(
     Padding(3),
     "building_id"/Int32ul,
-    "unit_type"/Int16ul,
+    UnitAdapter("unit_type"/Int16ul),
     "number"/Int16ul,
 )
 
@@ -97,7 +98,7 @@ ai_queue = "ai_queue"/Struct(
     Padding(3),
     "building_id"/Int32ul,
     "player_id"/Int16ul,
-    "unit_type"/Int16ul,
+    UnitAdapter("unit_type"/Int16ul),
     Padding(4)
 )
 
@@ -105,7 +106,7 @@ research = "research"/Struct(
     Padding(3),
     "building_id"/Int32ul,
     "player_id"/Int16ul,
-    "technology_type"/Int16ul,
+    TechAdapter("technology_type"/Int16ul),
     Padding(4),
 )
 
@@ -160,7 +161,8 @@ save = "save"/Struct(
     "player_id"/Byte,
     "filename"/CString(encoding='latin1'),
     Padding(lambda ctx: ctx._._.length - 23),
-    "checksum"/Bytes(4)
+    #"checksum"/Bytes(4)
+    Padding(4)
 )
 
 chapter = "chapter"/Struct(
@@ -172,7 +174,7 @@ build = "build"/Struct(
     "player_id"/Int16ul,
     "x"/Float32l,
     "y"/Float32l,
-    "building_type"/Int32ul,
+    UnitAdapter("building_type"/Int32ul),
     Padding(4),
     "sprite_id"/Int32ul,
     Array(lambda ctx: ctx.selected, "unit_ids"/Int32ul)
@@ -194,7 +196,8 @@ game = "game"/Struct(
         Padding(1)
     )),
     "instant_build"/If(this.mode == 'instant_build', Struct(
-        "data"/Bytes(9)
+        #"data"/Bytes(9)
+        Padding(9)
     )),
     "quick_build"/If(this.mode == 'quick_build', Struct(
         "status"/Flag,
@@ -210,23 +213,28 @@ game = "game"/Struct(
         Padding(8)
     )),
     "unk0"/If(this.mode == 'unk0', Struct(
-        "data"/Bytes(9)
+        #"data"/Bytes(9)
+        Padding(9)
     )),
     "spy"/If(this.mode == 'spy', Struct(
-        "data"/Bytes(9)
+        #"data"/Bytes(9)
+        Padding(9)
     )),
     "unk1"/If(this.mode == 'unk1', Struct(
-        "data"/Bytes(9)
+        #"data"/Bytes(9)
+        Padding(9)
     )),
     "farm_queue"/If(this.mode == 'farm_queue', Struct(
         "player_id"/Byte,
         "amount"/Byte,
-        "data"/Bytes(7)
+        #"data"/Bytes(7)
+        Padding(7)
     )),
     "farm_unqueue"/If(this.mode == 'farm_unqueue', Struct(
         "player_id"/Byte,
         "amount"/Byte,
-        "data"/Bytes(7)
+        #"data"/Bytes(7)
+        Padding(7)
     )),
     Padding(3)
 )
@@ -395,7 +403,7 @@ postgame = "achievements"/Struct(
     "complete"/Flag,
     Padding(14),
     "map_size"/Byte,
-    "map_id"/Byte,
+    MapAdapter("map_id"/Byte),
     "population"/Byte,
     Padding(1),
     VictoryEnum("victory_type"/Byte),

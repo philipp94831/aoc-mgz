@@ -1311,7 +1311,7 @@ UNITS = {
     784: 'Rattan Archer',
     811: 'Elite Arambai',
     823: 'Arambai',
-    830: 'Elite Karambit',
-    836: 'Karambit',
+    830: 'Elite Karambit Warrior',
+    836: 'Karambit Warrior',
     891: 'Elite Ballista Elephant'
 }

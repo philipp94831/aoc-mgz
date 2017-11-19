@@ -3,8 +3,9 @@
 from construct import (Array, Float32l, Int16ul, Int32sl, Int32ul, Padding,
                        PascalString, String, Struct)
 
-from mgz.enums import DifficultyEnum, PlayerTypeEnum, StartingAgeEnum
+from mgz.enums import DifficultyEnum, PlayerTypeEnum, StartingAgeEnum, CivEnum
 from mgz.util import Find
+from mgz.adapters import MapAdapter
 
 # pylint: disable=invalid-name
 
@@ -14,11 +15,11 @@ scenario_header = "scenario_header"/Struct(
     "next_uid"/Int32ul,
     "constant"/Int32ul,
     Array(16, "names"/String(256)),
-    Array(16, "player_ids"/Int32ul),
+    Array(16, "player_ids"/Int32sl),
     Array(16, "player_data"/Struct(
         "active"/Int32ul,
         "human"/Int32ul,
-        "civilization"/Int32ul,
+        CivEnum("civilization"/Int32ul),
         "constant"/Int32ul, # 0x04 0x00 0x00 0x00
     )),
     Padding(5),
@@ -28,12 +29,12 @@ scenario_header = "scenario_header"/Struct(
 
 # Scenarios have intro text, a bitmap, and cinematics.
 messages = "messages"/Struct(
-    "instruction_id"/Int32ul,
-    "hints_id"/Int32ul,
-    "victory_id"/Int32ul,
-    "defeat_id"/Int32ul,
-    "history_id"/Int32ul,
-    "scouts_id"/Int32ul,
+    "instruction_id"/Int32sl,
+    "hints_id"/Int32sl,
+    "victory_id"/Int32sl,
+    "defeat_id"/Int32sl,
+    "history_id"/Int32sl,
+    "scouts_id"/Int32sl,
     "instructions"/PascalString(lengthfield="instructions_length"/Int16ul,
                                 encoding='latin1'), # this contains the map name
     "hints"/PascalString(lengthfield="hints_length"/Int16ul),
@@ -101,7 +102,7 @@ game_settings = "game_settings"/Struct(
     Array(16, StartingAgeEnum("starting_ages"/Int32sl)),
     Padding(4),
     Padding(8),
-    "map_id"/Int32ul,
+    MapAdapter("map_id"/Int32ul),
     DifficultyEnum("difficulty"/Int32ul),
     Padding(4),
     Array(9, "player_info"/Struct(

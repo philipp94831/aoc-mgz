@@ -4,82 +4,6 @@ from construct import Enum, Pass
 
 # pylint: disable=invalid-name
 
-
-def ObjectEnum(ctx):
-    """Object Enumeration.
-
-    Should export the whole list from the game for the best accuracy.
-    """
-    return Enum(
-        ctx,
-        villager_male=83,
-        villager_female=293,
-        scout_cavalry=448,
-        eagle_warrior=751,
-        king=434,
-        flare=332,
-        relic=285,
-        turkey=833,
-        sheep=594,
-        deer=65,
-        boar=48,
-        iron_boar=810,
-        ostrich=1026,
-        javelina=822,
-        crocodile=1031,
-        rhinoceros=1139,
-        wolf=126,
-        jaguar=812,
-        hawk=96,
-        macaw=816,
-        shore_fish=69,
-        fish_1=455,
-        fish_2=456,
-        fish_4=458,
-        fish_3=457,
-        marlin_1=450,
-        marlin_2=451,
-        dolphin=452,
-        cactus=709,
-        berry_bush=59,
-        stone_pile=102,
-        gold_pile=66,
-        forest_tree=350,
-        forest_tree_2=411,
-        snow_pine_tree=413,
-        straggler_tree=349,
-        tc_1=109,
-        tc_2=618,
-        tc_3=619,
-        tc_4=620,
-        castle=70,
-        palisade_wall=72,
-        stone_wall=117,
-        stone_gate_1=64,
-        stone_gate_2=81,
-        stone_gate_3=88,
-        stone_gate_4=95,
-        palisade_gate_1=662,
-        palisade_gate_2=666,
-        palisade_gate_3=670,
-        palisade_gate_4=674,
-        fortified_wall=155,
-        cliff_1=264,
-        cliff_2=265,
-        cliff_3=266,
-        cliff_4=267,
-        cliff_5=268,
-        cliff_6=269,
-        cliff_7=270,
-        cliff_8=271,
-        cliff_9=272,
-        cliff_10=273,
-        outpost=598,
-        shipwreck=722,
-        map_revealer=837,
-        default=Pass
-    )
-
 def BuildingEnum(ctx):
     """Buildings Enumeration (in Action context)."""
     return Enum(
@@ -97,6 +21,58 @@ def GameTypeEnum(ctx):
         Regicide=1,
         DM=2,
         Scenario=3
+    )
+
+def ColorEnum(ctx):
+    return Enum(
+        ctx,
+        blue=0,
+        red=1,
+        green=2,
+        yellow=3,
+        teal=4,
+        purple=5,
+        gray=6,
+        orange=7,
+        #GAIA
+        none=13
+        )
+
+def CivEnum(ctx):
+    return Enum(
+        ctx,
+        Gaia=0,
+        Britons=1,
+        Franks=2,
+        Goths=3,
+        Teutons=4,
+        Japanese=5,
+        Chinese=6,
+        Byzantines=7,
+        Persians=8,
+        Saracens=9,
+        Turks=10,
+        Vikings=11,
+        Mongols=12,
+        Celts=13,
+        Spanish=14,
+        Aztecs=15,
+        Mayans=16,
+        Huns=17,
+        Koreans=18,
+        Italians=19,
+        Indians=20,
+        Incas=21,
+        Magyars=22,
+        Slavs=23,
+        Portuguese=24,
+        Ethiopians=25,
+        Malians=26,
+        Berbers=27,
+        Khmer=28,
+        Malay=29,
+        Burmese=30,
+        Vietnamese=31
     )
 
 def ObjectTypeEnum(ctx):
@@ -163,7 +139,7 @@ def ResourceEnum(ctx):
         gold=3,
         decay=12,
         fish=17,
-        default=Pass # lots of resource types exist
+        default="unknown" # lots of resource types exist
     )
 
 def VictoryEnum(ctx):
@@ -253,7 +229,7 @@ def OrderTypeEnum(ctx):
         packtreb=1,
         unpacktreb=2,
         garrison=5,
-        default=Pass
+        default="unknown"
     )
 
 def ReleaseTypeEnum(ctx):
