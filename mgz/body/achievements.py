@@ -4,7 +4,7 @@ from construct import (Array, Byte, Flag, Int16ul, Int32sl, Int32ul, Padding,
                        String, Struct)
 
 from mgz.util import TimeSecAdapter
-from mgz.enums import CivEnum
+from mgz.enums import CivEnum, ColorEnum, ColorIdEnum
 
 # pylint: disable=invalid-name
 
@@ -59,7 +59,7 @@ achievements = "achievements"/Struct(
     Array(8, "total_scores"/Int16ul),
     "victory"/Flag,
     CivEnum("civilization"/Byte),
-    "color_id"/Byte,
+    ColorIdEnum("color"/Byte),
     "team"/Byte,
     "ally_count"/Byte,
     Padding(1),
