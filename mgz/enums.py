@@ -72,7 +72,8 @@ def CivEnum(ctx):
         Khmer=28,
         Malay=29,
         Burmese=30,
-        Vietnamese=31
+        Vietnamese=31,
+        default="unknown"
     )
 
 def ObjectTypeEnum(ctx):
