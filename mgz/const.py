@@ -6,7 +6,8 @@ VERSIONS = {
     'VER 9.B': 'userpatch 1.4',
     'VER 9.C': 'userpatch 1.4',
     'VER 9.D': 'userpatch 1.4',
-    'VER 9.E': 'userpatch 1.5'
+    'VER 9.E': 'userpatch 1.5',
+    'VER 9.F': 'userpatch 1.5'
 }
 
 SPEEDS = {

@@ -41,11 +41,12 @@ def convert_to_timestamp(time):
     """Convert int to timestamp string."""
     if time == -1:
         return None
-    time = int(time*1000)
-    hour = time//1000//3600
-    minute = (time//1000//60) % 60
-    second = (time//1000) % 60
-    return str(hour).zfill(2)+":"+str(minute).zfill(2)+":"+str(second).zfill(2)
+    return int(time)
+    #time = int(time*1000)
+    #hour = time//1000//3600
+    #minute = (time//1000//60) % 60
+    #second = (time//1000) % 60
+    #return str(hour).zfill(2)+":"+str(minute).zfill(2)+":"+str(second).zfill(2)
 
 
 class TimeSecAdapter(Adapter):

@@ -3,7 +3,7 @@
 # pylint: disable=invalid-name,no-name-in-module
 
 from construct import (Array, Byte, Embedded, Float32l, If, Int16ul, Int32sl,
-                       Int32ul, Padding, String, Struct, Tell, this)
+                       Int32ul, Padding, String, Struct, Tell, this, Probe)
 
 from mgz.enums import MyDiplomacyEnum, TheirDiplomacyEnum, CivEnum, ColorEnum
 from mgz.header.objects import existing_object

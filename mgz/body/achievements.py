@@ -1,10 +1,11 @@
 """UserPatch 1.4+ achievements - appended to recorded game."""
 
 from construct import (Array, Byte, Flag, Int16ul, Int32sl, Int32ul, Padding,
-                       String, Struct)
+                       String, Struct, Probe)
 
 from mgz.util import TimeSecAdapter
-from mgz.enums import CivEnum, ColorEnum, ColorIdEnum
+from mgz.enums import CivEnum
+from mgz.adapters import ColorAdapter
 
 # pylint: disable=invalid-name
 
@@ -59,7 +60,7 @@ achievements = "achievements"/Struct(
     Array(8, "total_scores"/Int16ul),
     "victory"/Flag,
     CivEnum("civilization"/Byte),
-    ColorIdEnum("color"/Byte),
+    ColorAdapter("color"/Byte),
     "team"/Byte,
     "ally_count"/Byte,
     Padding(1),

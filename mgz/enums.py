@@ -20,21 +20,9 @@ def GameTypeEnum(ctx):
         RM=0,
         Regicide=1,
         DM=2,
-        Scenario=3
+        Scenario=3,
+        TurboRM=8
     )
-
-def ColorIdEnum(ctx):
-    return Enum(
-        ctx,
-        blue=1,
-        red=2,
-        green=3,
-        yellow=4,
-        teal=5,
-        purple=6,
-        gray=7,
-        orange=8
-        )
 
 def ColorEnum(ctx):
     return Enum(
