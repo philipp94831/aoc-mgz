@@ -38,6 +38,7 @@ attributes = "attributes"/Struct(
     Padding(1),
 )
 
+
 # Initial state of players, including Gaia.
 player = "players"/Struct(
     attributes,
