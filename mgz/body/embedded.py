@@ -62,9 +62,9 @@ default = Struct(
 # Embedded structures identified by first byte (for now)
 embedded = "embedded"/Struct(
     "marker"/Peek(Int16ul),
-    Embedded("data"/Switch(lambda ctx: ctx.marker, {
+    "data"/Switch(lambda ctx: ctx.marker, {
         0: header,
         9024: chat,
         65535: other
-    }, default=default))
+    }, default=default)
 )

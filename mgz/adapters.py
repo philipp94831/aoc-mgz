@@ -1,5 +1,5 @@
 from construct import ExprAdapter
-from mgz.const import VERSIONS, SPEEDS, MAP_NAMES, UNITS, TECHNOLOGIES, PLAYER_COLORS
+from mgz.const import SPEEDS, MAP_NAMES, UNITS, TECHNOLOGIES, PLAYER_COLORS
 
 
 def UnitAdapter(ctx):
@@ -30,14 +30,6 @@ def SpeedAdapter(ctx):
         ctx,
         encoder = lambda obj,ctx: None,
         decoder = lambda obj,ctx: SPEEDS.get(obj, 'Unknown')
-        )
-
-
-def VersionAdapter(ctx):
-    return ExprAdapter(
-        ctx,
-        encoder = lambda obj,ctx: None,
-        decoder = lambda obj,ctx: VERSIONS.get(obj, 'Unknown')
         )
 
 

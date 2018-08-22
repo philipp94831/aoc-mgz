@@ -10,7 +10,7 @@ def parse(f, parsefile):
     game = ParsedGame(f)
     parsed = game.parseFull()
     with open(parsefile, "w") as out:
-       out.write(json.dumps(parsed, indent=4))
+       out.write(json.dumps(parsed))
 
 if __name__ == "__main__":
     construct.setglobalstringencoding('latin1')
