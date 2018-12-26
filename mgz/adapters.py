@@ -37,5 +37,5 @@ def TechAdapter(ctx):
     return ExprAdapter(
         ctx,
         encoder = lambda obj,ctx: None,
-        decoder = lambda obj,ctx: TECHNOLOGIES.get(obj, 'Unknown')
+        decoder = lambda obj,ctx: TECHNOLOGIES.get(obj, 'Unknown' + str(obj))
         )

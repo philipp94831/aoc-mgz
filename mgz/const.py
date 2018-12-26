@@ -275,8 +275,8 @@ TECHNOLOGIES = {
     219: 'Ring Archer Armor',
     221: 'Two-Man Saw',
     222: 'Man-at-Arms',
-    226: 'Coinage (Castle Age)',
-    227: 'Coinage (Imperial Age)',
+    226: 'Coinage',
+    227: 'Coinage',
     230: 'Block Printing',
     231: 'Sanctity',
     233: 'Illumination',
@@ -1082,6 +1082,12 @@ UNITS = {
     885: 'Siege Tower',
     886: 'Tarkan',
     887: 'Elite Tarkan',
+    #TODO
+    #Hidden Cup Qualifier 7 (PoV) vs 10 g2.mgz
+    #888: 'Some building',
+    #TODO
+    #TheViper-VS-TaToH--hideout-20171025..mgz
+    #890: 'Some building',
     892: 'Heavy Pikeman',
     894: 'Eastern Swordsman',
     896: 'Waterfall',
