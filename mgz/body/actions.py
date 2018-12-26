@@ -92,7 +92,7 @@ queue = "queue"/Struct(
 
 multiqueue = "multiqueue"/Struct(
     Padding(3),
-    "unit_type"/Int16ul,
+    UnitAdapter("unit_type"/Int16ul),
     "num_buildings"/Byte,
     "queue_amount"/Byte,
     Array(lambda ctx: ctx.num_buildings, "building_ids"/Int32ul)
@@ -396,7 +396,8 @@ backtowork = "backtowork"/Struct(
 )
 
 unknown = "unknown53"/Struct(
-    "bytes"/Bytes(lambda ctx: ctx._._.length - 1)
+    #"bytes"/Bytes(lambda ctx: ctx._._.length - 1)
+    Padding(lambda ctx: ctx._._.length - 1)
 )
 
 postgame = "achievements"/Struct(

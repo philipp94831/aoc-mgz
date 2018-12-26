@@ -64,7 +64,8 @@ action_data = "action"/Struct(
         "postgame": actions.postgame
     }, default=Struct(
         "unk_action"/Computed(lambda ctx: ctx._.type),
-        "bytes"/Bytes(lambda ctx: ctx._._.length - 1)
+        #"bytes"/Bytes(lambda ctx: ctx._._.length - 1)
+        Padding(lambda ctx: ctx._._.length - 1)
     ))),
     Padding(4)
 )

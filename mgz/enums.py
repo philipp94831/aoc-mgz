@@ -321,5 +321,5 @@ def ActionEnum(ctx):
         townbell=127,
         backtowork=128,
         postgame=255,
-        default=Pass
+        default="default"
     )

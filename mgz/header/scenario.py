@@ -106,7 +106,7 @@ game_settings = "game_settings"/Struct(
     DifficultyEnum("difficulty"/Int32ul),
     Padding(4),
     Array(9, "player_info"/Struct(
-        "data_ref"/Int32ul,
+        "player_id"/Int32ul,
         PlayerTypeEnum("type"/Int32ul),
         "name"/PascalString(lengthfield="name_length"/Int32ul)
     )),
