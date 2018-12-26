@@ -1,6 +1,6 @@
 """Actions."""
 
-from construct import (Array, Byte, Bytes, Const, CString, Flag, Float32l, If,
+from construct import (Array, Byte, Const, CString, Flag, Float32l, If,
                        Int16ul, Int32sl, Int32ul, Padding, Peek, String,
                        Struct, this)
 
@@ -28,6 +28,20 @@ interact = "interact"/Struct(
     If(lambda ctx: ctx.selected < 0xff, Array(
         lambda ctx: ctx.selected, "unit_ids"/Int32ul
     ))
+)
+
+give_attribute = "give_attribute"/Struct(
+    "player_id"/Byte,
+    "target_id"/Byte,
+    "attribute"/Byte,
+    "amount"/Float32l
+)
+
+add_attribute = "add_attribute"/Struct(
+     "player_id"/Byte,
+     "attribute"/Byte,
+     Padding(1),
+     "amount"/Float32l
 )
 
 ai_interact = "ai_interact"/Struct(
@@ -165,8 +179,7 @@ save = "save"/Struct(
     "player_id"/Byte,
     "filename"/CString(encoding='latin1'),
     Padding(lambda ctx: ctx._._.length - 23),
-    #"checksum"/Bytes(4)
-    Padding(4)
+    "checksum"/Int32ul
 )
 
 chapter = "chapter"/Struct(
@@ -200,7 +213,6 @@ game = "game"/Struct(
         Padding(1)
     )),
     "instant_build"/If(this.mode == 'instant_build', Struct(
-        #"data"/Bytes(9)
         Padding(9)
     )),
     "quick_build"/If(this.mode == 'quick_build', Struct(
@@ -217,27 +229,22 @@ game = "game"/Struct(
         Padding(8)
     )),
     "unk0"/If(this.mode == 'unk0', Struct(
-        #"data"/Bytes(9)
         Padding(9)
     )),
     "spy"/If(this.mode == 'spy', Struct(
-        #"data"/Bytes(9)
         Padding(9)
     )),
     "unk1"/If(this.mode == 'unk1', Struct(
-        #"data"/Bytes(9)
         Padding(9)
     )),
     "farm_queue"/If(this.mode == 'farm_queue', Struct(
         "player_id"/Byte,
         "amount"/Byte,
-        #"data"/Bytes(7)
         Padding(7)
     )),
     "farm_unqueue"/If(this.mode == 'farm_unqueue', Struct(
         "player_id"/Byte,
         "amount"/Byte,
-        #"data"/Bytes(7)
         Padding(7)
     )),
     Padding(3)
@@ -395,14 +402,13 @@ backtowork = "backtowork"/Struct(
     "towncenter_id"/Int32ul
 )
 
-unknown = "unknown53"/Struct(
-    #"bytes"/Bytes(lambda ctx: ctx._._.length - 1)
+ai_command = "ai_command"/Struct(
     Padding(lambda ctx: ctx._._.length - 1)
 )
 
 postgame = "achievements"/Struct(
     Padding(3),
-    "scenario_filename"/String(32, padchar=b'\x00', trimdir='right'),
+    "scenario_filename"/String(32, padchar=b'\x00', trimdir='right', encoding='latin1'),
     "player_num"/Byte,
     "computer_num"/Byte,
     Padding(2),
