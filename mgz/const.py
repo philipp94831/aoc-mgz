@@ -745,8 +745,7 @@ UNITS = {
     409: 'Tree K',
     410: 'Tree L',
     411: 'Forest Tree',
-    #TODO
-    #412: 'Some ECL tree',
+    412: 'Elephant',
     413: 'Snow Pine Tree',
     414: 'Jungle Tree',
     415: 'Stump',
@@ -1082,12 +1081,8 @@ UNITS = {
     885: 'Siege Tower',
     886: 'Tarkan',
     887: 'Elite Tarkan',
-    #TODO
-    #Hidden Cup Qualifier 7 (PoV) vs 10 g2.mgz
-    #888: 'Some building',
-    #TODO
-    #TheViper-VS-TaToH--hideout-20171025..mgz
-    #890: 'Some building',
+    888: 'Llama',
+    890: 'Llama',
     892: 'Heavy Pikeman',
     894: 'Eastern Swordsman',
     896: 'Waterfall',

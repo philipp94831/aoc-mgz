@@ -3,3 +3,5 @@ mgz.egg-info/
 .tox/
 *.pyc
 *.sqlite
+.idea/
+*.iml
